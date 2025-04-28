@@ -1,6 +1,7 @@
 <script>
   import Queries from './routes/Queries.svelte';
   import Reports from './routes/Reports.svelte';
+  import AdminPanel from "./routes/AdminPanel.svelte";
 
   let currentPage = 'queries';
 
@@ -28,6 +29,14 @@
       >
         Отчёты
       </button>
+      <button
+              on:click={() => goTo('admin')}
+              class="px-4 py-2 rounded-md font-medium transition text-white hover:bg-blue-500"
+              class:bg-blue-500={currentPage === 'admin'}
+      >
+        Админка
+      </button>
+
     </div>
   </div>
 </nav>
@@ -37,5 +46,8 @@
     <Queries />
   {:else if currentPage === 'reports'}
     <Reports />
+  {:else if currentPage === 'admin'}
+    <AdminPanel />
   {/if}
+
 </main>
